@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .hour{
+            width: 600px;
+            height: 600px;
+            position: relative;
+            margin: auto;
+        }
+        .bg{
+            width: 100%;
+            height: 100%;
+            position: relative;
+            left: 0;
+            top:0;
+        }
+        .h,.min,.s{
+            position: absolute;
+            left: 50%;
+            margin-left: -15px;
+            top: 0;
+        }
+        .h{
+            z-index: 1;
+        }
+        .min{
+            z-index: 2;
+        }
+        .s{
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+<div class="hour">
+    <img class="bg" src="images/bg.jpg" alt=""/>
+    <img class="h" src="images/h.png" alt=""/>
+    <img class="min" src="images/min.png" alt=""/>
+    <img class="s" src="images/s.png" alt=""/>
+</div>
+</body>
+<script>
+    function cla(a){
+        return document.getElementsByClassName(a)
+    }
+    clock();
+    var timers=setInterval(function(){
+        clock();
+    },10);
+    function clock(){
+        var timer=new Date();
+        var os=cla("s")[0];
+        var oh=cla("h")[0];
+        var omin=cla("min")[0];
+        var ms=timer.getMilliseconds();
+        var s=timer.getSeconds();
+        var min=timer.getMinutes();
+        var h=timer.getHours();
+        os.style.transform="rotate("+6*(s+ms/1000)+"deg)";
+        omin.style.transform="rotate("+6*(min+s/60)+"deg)";
+        oh.style.transform="rotate("+30*(h+min/60)+"deg)";
+    }
+    console.log(true && 1);/*1*/
+    console.log(1 || 2);/*1*/
+</script>
+</html>

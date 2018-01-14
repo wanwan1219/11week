@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .banner{
+            width: 500px;
+            height: 300px;
+            margin: 200px auto;
+            border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+        .banner ul{
+            width: 30000px;
+            height: 300px;
+            position: absolute;
+            left: 0;
+        }
+        .banner ul li{
+            width: 500px;
+            height: 300px;
+            background: pink;
+            float: left;
+            color: black;
+            text-align: center;
+            font: bold 60px/300px "";
+        }
+        .banner ol{
+            position: absolute;
+            left: 50%;
+            margin-left: -75px;
+            bottom: 20px;
+        }
+        .banner ol li{
+            margin-left: 10px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            float: left;
+        }
+        .banner ol .col{
+            background: black;
+        }
+        .banner .click div{
+            width: 30px;
+            height: 50px;
+            background: yellow;
+            font: 30px/50px "";
+            position: absolute;
+            top:50%;
+            margin-top: -25px;
+        }
+        .prev{
+            left: 0;
+        }
+        .next{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>1</li>
+    </ul>
+    <ol>
+        <li class="col"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <div class="click">
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+    </div>
+</div>
+</body>
+<script>
+    function cla(a) {
+        return document.getElementsByClassName(a)
+    }
+    var banner=cla("banner")[0],
+            ul=banner.children[0],
+            ulLis=ul.children,
+            ol=banner.children[1],
+            olLis=ol.children,
+            prev=cla("prev")[0],
+            next=cla("next")[0],
+            wid=ulLis[0].offsetWidth,
+            k= 0,
+            fa=true,
+            index=0;
+    for(var i=0;i<ulLis.length-1;i++){
+        olLis[i].index=i;
+        olLis[i].onmouseover=function(){
+           if(fa==true){
+               fa=false;
+               index=this.index;
+               k=index;
+               animated(-index*wid,ul,1,faa);
+               for(var j=0;j<olLis.length;j++){
+                   olLis[j].className="";
+               }
+               olLis[k].className="col";
+           }
+        };
+    }
+    next.onclick=function(){
+        index++;
+        if(index>ulLis.length-1){
+            index=1;
+            ul.style.left=0;
+        }
+        k++;
+        if(k>ulLis.length-2){
+            k=0;
+        }
+        animated(-index*wid,ul,1,faa);
+        for(var j=0;j<ulLis.length-1;j++){
+            olLis[j].className="";
+        }
+        olLis[k].className="col";
+    };
+    prev.onclick=function(){
+        index--;
+        if(index<0){
+            index=ulLis.length-2;
+            ul.style.left=-(index+1)*wid+"px";
+        }
+        k--;
+        if(k<0){
+            k=ulLis.length-2;
+        }
+        animated(-index*wid,ul,1,faa);
+        for(var j=0;j<olLis.length;j++){
+            olLis[j].className="";
+        }
+        olLis[k].className="col";
+    };
+
+    function faa(){
+        fa=true;
+    }
+
+
+    function animated(target,obj,speed,fun){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var left = obj.offsetLeft;
+            var step=(target-left)/30;/*已经有正负了*/
+            step=left>target?Math.floor(step):Math.ceil(step);
+//            if(Math.abs(target-left)>Math.abs(step)){
+//                obj.style.left = left+step+ "px";/*让当前obj的left值＋1*/
+//            }else{
+//                obj.style.left=target+"px";
+//                clearInterval(obj.timer);
+//                if(fun){
+//                    fun();
+//                }
+//            }
+            obj.style.left=left+step+"px";
+            if(obj.offsetLeft==target){
+                clearInterval(obj.timer);
+                if(fun&&typeof fun=="function"){/*存在fun 并且fun是个函数*/
+                    fun();
+                }
+            }
+        },speed);
+    }
+
+
+</script>
+</html>

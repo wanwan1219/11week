@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul{
+            width: 500px;
+            height: 300px;
+            background: yellow;
+        }
+       dd{
+            width: 20px;
+            height: 20px;
+            background: deeppink;
+            float: left;
+            margin-right: 30px;
+            border-radius: 50%;
+           text-align: center;
+           line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">1</div>
+<div class="box">2</div>
+<div class="box">3</div>
+<p class="box">4
+    <span class="box1"></span>
+</p>
+<ul class="ul">
+
+</ul>
+</body>
+<script>
+    var arr=[1,2];
+    var m=arr.push("a");
+    var n=arr.unshift("b");
+   // console.log(m, n);/*3,4*/
+    //console.log(arr);/*["b", 1, 2, "a"]*/
+    var a=arr.pop();
+    var b=arr.shift();
+    //console.log(a, b);/*a,b*/
+    //console.log(arr);/*[1, 2]*/
+    var arr2=[3,4];
+    var arr3=arr.concat(arr2);
+    //console.log(arr3);/*[1, 2, 3, 4]*/
+    var q=arr3.join("...");
+    //console.log(q);/*用...作为分隔符将数组转化成字符串 省略该参数会默认用逗号 用空的字符串"" 则会无缝连接*//*1...2...3...4*/
+
+
+    var str="关羽，张飞，赵云，马超，黄忠";
+    var a=str.split("，",3);/*遇到，（字符串中有的）就分割一次 后面最大长度参数不写 就默认分割最大长度 5个 如果小于的话 只分前几个 后面不管 大于的话 按照分割最大长度*/
+    console.log(a);/*["关羽", "张飞", "赵云"]*/
+    var b=str.split("，",10);
+    console.log(b); /*["关羽", "张飞", "赵云", "马超", "黄忠"]*/
+
+    document.getElementsByClassName(a);
+    document.getElementsByTagName(a);
+    document.getElementById(a);
+
+
+    function cla(a){
+        if(document.getElementsByClassName){
+            return document.getElementsByClassName(a)
+        }else{
+            var tag=document.getElementsByTagName("*");
+            var Arr=[];
+            for(var i=0;i<tag.length;i++){
+                if(tag[i].className==a){
+                    Arr.push(tag[i]);
+                }
+            }
+            return Arr;
+        }
+    }
+//    console.log(cla("box")[2]);
+
+    var p=cla("box1")[0].parentNode;
+    cla("box1")[0].onclick=function(e){
+//        p.style.background="red";
+        e.target.parentNode.style.background="red";
+    };
+
+
+
+
+    var ul=cla('ul')[0];
+    var dd=null;
+    for(var i=0;i<8;i++){
+        dd=document.createElement("dd");
+        ul.appendChild(dd);
+        dd.style.display="block";
+        ul.children[i].innerHTML=i+1;
+    }
+
+    var p=document.createElement("p");
+//    var dd=document.createElement("dd");
+    p.style.display="block";
+    ul.insertBefore(p,dd)
+
+
+
+    var timer=setInterval(function(){
+        var date=new Date();
+        var date2=new Date("2017/10/12 20:30:00");
+        //console.log(date);/*Thu Oct 12 2017 10:16:55 GMT+0800 (中国标准时间)*/
+        //console.log(date2);/*Thu Sep 05 2019 12:00:00 GMT+0800 (中国标准时间)*/
+        var ms=date2- date;
+//        console.log(ms);
+
+        var hh=parseInt(ms/1000/60/60);
+        var min=parseInt(ms/1000/60-hh*60);
+        var ss=parseInt((ms-hh*60*60*1000-min*60*1000)/1000);
+        console.log(hh, min, ss);
+    },1000);
+
+
+
+
+
+    //getDate()/*	从 Date 对象返回一个月中的某一天 (1 ~ 31)。*/
+    //getDay()/*	从 Date 对象返回一周中的某一天 (0 ~ 6)。*/
+    //getMonth()	/*从 Date 对象返回月份 (0 ~ 11)。*/
+    //getFullYear()	/*从 Date 对象以四位数字返回年份。*/
+    //getYear()	/*请使用 getFullYear() 方法代替。*/
+    //getHours()	/*返回 Date 对象的小时 (0 ~ 23)。*/
+    //getMinutes()	/*返回 Date 对象的分钟 (0 ~ 59)。*/
+    //getSeconds()	/*返回 Date 对象的秒数 (0 ~ 59)。*/
+    //getMilliseconds()	/*返回 Date 对象的毫秒(0 ~ 999)。*/
+
+</script>
+</html>

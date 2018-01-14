@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .nav{
+            width: 1200px;
+            position: relative;
+            margin: 100px auto;
+        }
+        ul{
+            position: absolute;
+            left: 0;
+            top:0;
+            z-index: 2;
+        }
+        ul li{
+            height: 42px;
+            float: left;
+            text-align: center;
+            font: 17px/42px "";
+            padding-right:50px;
+            padding-left: 5px;
+        }
+        .nav .bg{
+            width: 83px;
+            height: 42px;
+            position: absolute;
+            left: 0;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<span>请输入水果的价格：</span>
+<input class="text" type="text"/>
+<input class="but" type="button" value="搜索"/>
+<p class="p1"></p>
+
+<div class="nav">
+    <img class="bg" src="images/cloud.gif" alt=""/>
+    <ul>
+        <li>北京校区</li>
+        <li>上海校区</li>
+        <li>广州校区</li>
+        <li>深圳校区</li>
+        <li>武汉校区</li>
+        <li>关于我们</li>
+        <li>联系我们</li>
+        <li>招贤纳士</li>
+    </ul>
+</div>
+
+</body>
+<script>
+    function cla(a){
+        return document.getElementsByClassName(a)
+    }
+    var oTe=cla("text")[0];
+    var oBtn=cla("but")[0];
+    var oP=cla("p1")[0];
+    var bg=cla("bg")[0];
+    var nav=cla("nav")[0];
+    var ul=nav.children[1];
+    var ullis=ul.children;
+    var index=0;
+    var k=0;
+    var wid=ullis[0].offsetWidth;
+
+    oBtn.onclick=function(){
+        var text=oTe.value;/*要放在里面 否则 获取不到*/
+        switch(text){
+            case "苹果":
+                oP.innerHTML="20元/两";
+                break;
+            case "香蕉":
+                oP.innerHTML="40元/两";
+                break;
+            case "大鸭梨":
+                oP.innerHTML="100元/两";
+                break;
+            case "杨鹏展":
+                oP.innerHTML="傻逼";
+                break;
+            case "班长":
+                oP.innerHTML="倒贴20";
+                break;
+            default:
+                oP.innerHTML="我家没有"
+        }
+    };
+
+    for(var i=0;i<ullis.length;i++){
+        ullis[i].index=i;
+        ullis[i].onmouseover=function(){
+            index=this.index;
+            animated(index*wid,bg,1);
+        };
+        ullis[i].onclick=function(){
+            k=this.index;
+        }
+    }
+    nav.onmouseout=function(){
+        animated(k*wid,bg,1);
+    };
+
+
+    function animated(target,obj,speed,fun){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var left = obj.offsetLeft;
+            var step=(target-left)/30;/*已经有正负了*/
+            step=left>target?Math.floor(step):Math.ceil(step);
+            obj.style.left=left+step+"px";
+            if(obj.offsetLeft==target){
+                clearInterval(obj.timer);
+                if(fun&&typeof fun=="function"){/*存在fun 并且fun是个函数*/
+                    fun();
+                }
+            }
+        },speed);
+    }
+
+
+
+</script>
+</html>

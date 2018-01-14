@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>专注独家折扣,汇聚全网超值折扣,品牌商品低至1折</title>
+    <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/load.css" type="text/css">
+    <script src="js/rem.common.js"></script>
+    <script src="js/load.js"></script>
+</head>
+
+<body>
+<div class="header_top">
+    <img src="img/go_load_new.png" alt="">
+</div>
+<div class="header_wrap">
+    <a id="back" href="#"><img src="img/arrow_white.png" alt=""></a>
+    <span>登录</span>
+    <a id="user" href="#">注册</a>
+</div>
+<div class="login_wrap">
+    <ul id="login_switch" class="clear">
+        <li class="active">卷皮账号登陆</li>
+        <li>手机快捷登陆</li>
+    </ul>
+    <form id="normal-logo" action="">
+        <div class="login-info">
+            <ul class="info-input">
+                <li>
+                    <input type="text" name="username" id="username" placeholder="手机号/邮箱/用户名" value="" class="normalInput">
+                    <em class="reg-close" style="display: none;">
+                        <img src="//jp.juancdn.com/jpwebapp_v1/images_v1/user/x.png?2dc3a154-1&amp;sv=a8351a1e">
+                    </em>
+                </li>
+                <li>
+                    <input type="password" name="password" id="password" placeholder="密码" class="normalInput">
+                    <em class="reg-close" style="display: none;">
+                        <img src="//jp.juancdn.com/jpwebapp_v1/images_v1/user/x.png?2dc3a154-1&amp;sv=a8351a1e">
+                    </em>
+                </li>
+            </ul>
+        </div>
+    </form>
+    <form id="quick-login" action="" style="display:none">
+        <div class="login-info">
+            <ul class="info-input clear">
+                <li>
+                    <input type="tel" pattern="[0-9]*" placeholder="请输入手机号码" id="mobile" name="mobile" class="normalInput">
+                    <em class="reg-close" style="display: none;" id="reg-mobile-close">
+                        <img src="//jp.juancdn.com/jpwebapp_v1/images_v1/user/x.png?2dc3a154-1&amp;sv=a8351a1e">
+                    </em>
+                </li>
+                <li>
+                    <div class="quickLoginHmtl clear">
+                        <input type="tel" class="code-txt normalInput fl" id="code" placeholder="请输入验证码" name="code">
+                        <i style="display: none;" class="reg-close fl" id="reg-code-close">
+                            <img src="//jp.juancdn.com/jpwebapp_v1/images_v1/user/x.png?2dc3a154-1&amp;sv=a8351a1e">
+                        </i>
+                        <a class="btn_get get-code disable-code" id="code_btn" href="javascript:;">获取验证码</a>
+                    </div>
+                </li>
+            </ul>
+            <input type="hidden" name="mtoken" value="aec37e9ad8bde3c8f494861ad6cf9d71" id="mtoken">
+            <input type="hidden" name="mtokenact" value="quick" id="mtokenact">
+        </div>
+    </form>
+    <form action="">
+        <a id="btn_quick_login" class="sub codeBtn disable-btn" rel="nofollow">登  录</a>
+        <a style="display: none;" id="normal_login" class="sub disable-btn" rel="nofollow">登  录</a>
+        <div id="quick_l" class="other-action">
+            <div class="check col">
+                <img src="img/label_on.png" alt="">
+            </div>
+            两周之内免登录
+            <a href="//m.juanpi.com/user/forget" target="_parent" class="free-reg">忘记密码？</a>
+        </div>
+    </form>
+    <div class="wap-app">
+        <h3 class="third-txt">第三方账号快速登录</h3>
+        <div class="third-app clear">
+            <a href="//user.juanpi.com/login/connect/type/qq?returnurl=https://m.juanpi.com/user/?select=5_1&amp;platform=wap&amp;app=zhe" class="qq" target="_parent" onclick="_paq.push(['trackEvent', 'login', 'click_login_third_qq', '', '']);">
+                <img src="img/tencent.png"/>
+            </a>
+            <a href="//user.juanpi.com/login/connect/type/taobao?returnurl=https://m.juanpi.com/user/?select=5_1&amp;platform=wap&amp;app=zhe" class="tao" target="_parent" onclick="_paq.push(['trackEvent', 'login', 'click_login_third_taobao', '', '']);">
+                <img src="img/taobao.png"/>
+            </a>
+            <a href="//user.juanpi.com/login/connect/type/sina?returnurl=https://m.juanpi.com/user/?select=5_1&amp;platform=wap&amp;app=zhe" class="sina" target="_parent" onclick="_paq.push(['trackEvent', 'login', 'click_login_third_weibo', '', '']);">
+                <img src="img/sina.png"/>
+            </a>
+        </div>
+        <ul class="protection">
+            <li class="lt">
+                <img src="img/unexpress.png" alt="">
+                全场包邮
+            </li>
+            <li>
+                <img src="img/search.png" alt="">
+                100%人工质检
+            </li>
+            <li class="rt">
+                <img src="img/seven.png" alt="">
+                7天放心退
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

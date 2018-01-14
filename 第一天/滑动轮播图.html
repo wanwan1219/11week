@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        .box{
+            width: 300px;
+            height: 200px;
+            border: 1px solid black;
+            position: relative;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        ul{
+            width: 4000px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+        }
+        ul li{
+            width: 300px;
+            height: 200px;
+            background: palegoldenrod;
+            float: left;
+            color: black;
+            font: bold 60px/200px "";
+            text-align: center;
+        }
+        ol{
+            position: absolute;
+            left: 50%;
+            margin-left: -75px;
+            bottom: 20px;
+        }
+        ol li{
+            width: 20px;
+            height: 20px;
+            float: left;
+            margin-left: 10px;
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        ol .col{
+            background: red;
+        }
+        .click div{
+            width: 30px;
+            height: 50px;
+            background: pink;
+            line-height: 50px;
+            position: absolute;
+            top:50%;
+            margin-top: -25px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .prev{
+            left: 0;
+        }
+        .next{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>1</li>
+    </ul>
+    <ol>
+        <li class="col"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <div class="click">
+        <div class="prev">&lt;</div>
+        <div class="next">&gt;</div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+//    function cla(a){
+//        return document.getElementsByClassName(a);
+//    }
+    var wid=$(".box ul li").width();
+    var len=$(".box ul li").length;
+    var index=0;
+    var hhh=0;
+    var fa=true; /*节流阀*/
+    $(".box ol li").click(function(){
+        index=$(this).index();   /*ul li的索引*/
+        hhh=$(this).index();   /*ol li的索引*/
+        $(".box ol li").removeClass("col").eq(hhh).addClass("col");
+        $(".box ul").animate({left:-(wid *index)},500)
+    });
+
+
+
+    function right(){
+        if(fa==true){
+            fa=false;
+            index++;
+            if(index>len-1){
+                index=1;  /*直接到第二张图片*/
+                $(".box ul").css({left:0}); /*瞬间到第一张图*/
+            }
+            hhh++;
+            if(hhh>len-2){/*小圆点比图片少*/
+                hhh=0;
+            }
+            $(".box ol li").removeClass("col").eq(hhh).addClass("col");
+            $(".box ul").stop().animate({left:-(wid*index)},500,function(){
+                fa=true;
+            });
+        }
+    }
+
+    $(".box .click .next").click(function(){
+        right()
+    });
+
+
+    $(".box .click .prev").click(function(){
+        if(fa==true){
+            fa=false;
+            index--;
+            if(index<0){
+                index=len-2;
+                $(".box ul").css({left:-(len-1)*wid});
+            }
+            hhh--;
+            if(hhh<0){
+                hhh=len-2
+            }
+            $(".box ol li").removeClass("col").eq(hhh).addClass("col");
+            $(".box ul").stop().animate({left:-(wid*index)},500,function(){fa=true});
+        }
+    });
+    var timer=setInterval(right,2000);
+    $(".box").hover(function(){
+        clearInterval(timer)
+    },function(){
+        timer=setInterval(right,2000)
+    })
+</script>
+</html>

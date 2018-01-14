@@ -1,0 +1,190 @@
+body{
+    background: #fff;
+}
+.header_top{
+    width:100%;
+    height:.81rem;
+}
+.header_top img{
+    width:100%;
+}
+.header_wrap{
+    width:100%;
+    height:44px;
+    background: #ff5a61;
+    background: -webkit-gradient(linear,left top,right bottom,color-stop(0,#ff5a61),color-stop(1,#fd631c));
+    background: -webkit-linear-gradient(-30deg,#ff5a61 50%,#fd631c);
+    background: linear-gradient(150deg,#ff5a61 50%,#fd631c);
+    line-height: 44px;
+    position:relative;
+    color:#fff;
+}
+#back{
+    display:inline-block;
+    width:25px;
+    height:25px;
+    text-align: center;
+    margin-left:10px;
+    position:absolute;
+}
+#back img{
+    width:100%;
+}
+.header_wrap span{
+    display: inline-block;
+    width:100%;
+    height:44px;
+    line-height: 44px;
+    text-align: center;
+    font-size: 18px;
+    position:absolute;
+}
+#user{
+    color:#fff;
+    position:absolute;
+    right:0;
+    font-size: 14px;
+    padding-right: 14px;
+}
+.login_wrap{
+    padding-bottom: 1.5rem;
+}
+#login_switch {
+    width:100%;
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    color: #999;
+}
+#login_switch li{
+    width:50%;
+    text-align: center;
+    float:left;
+    position:relative;
+}
+#login_switch li.active{
+    color: #ff464e;
+}
+#login_switch li.active:after {
+    position:absolute;
+    content: '';
+    bottom: 0;
+    left: 30px;
+    right: 30px;
+    height: 2px;
+    background: #ff464e;
+}
+.login-info li {
+    border-bottom: 1px solid #ebebeb;
+    position:relative;
+}
+.login-info .normalInput {
+    height: 48px;
+    width: 100%;
+    border: 0;
+    font-size: 14px;
+    box-sizing: border-box;
+    color:#333;
+    outline: none;
+}
+.login-info .reg-close {
+    position:absolute;
+    right: 0;
+    top: 0;
+    width: 25px;
+    height: 48px;
+}
+.login-info .reg-close img {
+    margin-top: 12px;
+    width: 100%;
+}
+.login-info .code-txt {
+    width: 64%;
+}
+.login-info #code_btn, .login-info #code_btn_bind {
+    position:absolute;
+    right: 0;
+    top: 0;
+    height: 48px;
+    line-height: 48px;
+    font-size: 14px;
+    color: #999;
+}
+#btn_quick_login, #normal_login, #submitBtn {
+    height: 48px;
+    line-height: 48px;
+    font-size: 18px;
+    background: #dbdbdb;
+    margin-top: 25px;
+    color: #fff;
+    text-align: center;
+    width:100%;
+    display:inline-block;
+}
+.other-action {
+    height: 37px;
+    line-height: 37px;
+    font-size: 14px;
+    margin-bottom: 52px;
+    color: #999;
+    margin-top:2px;
+}
+.other-action .check{
+    width: 17px;
+    height: 17px;
+    border: 2px solid #999;
+    margin-right: 9px;
+    display:inline-block;
+    vertical-align: middle;
+}
+.other-action .check.col{
+    background:#ff464e;
+}
+.other-action .check img{
+    width:100%;
+    display:block;
+}
+.other-action .free-reg {
+    font-size: 14px;
+    color: #999;
+    float:right;
+}
+.wap-app{
+    text-align: center;
+    color:#999;
+}
+.wap-app .third-txt {
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+.wap-app .third-app {
+    padding-bottom: 23px;
+    border-bottom: 1px solid #ebebeb;
+}
+.wap-app .third-app a {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.wap-app .third-app a img {
+    width: 100%;
+    height: auto;
+}
+.wap-app .protection {
+    padding-top: 13px;
+    height: 22px;
+    line-height: 22px;
+    color: #c2c2c2;
+    font-size: 11px;
+}
+.wap-app .protection li{
+    display:inline-block;
+}
+.wap-app .protection img {
+    height: 22px;
+    width: auto;
+    margin-right: 5px;
+}

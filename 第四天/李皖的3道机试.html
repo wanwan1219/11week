@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .score{
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+<input class="btn" type="button" value="请仔细阅读协议(5)" disabled="disabled"/>
+<input class="t1" type="text"/>
++
+<input class="t2" type="text"/>
+<input class="click" type="button" value="="/>
+<input class="t3" type="text"/>
+
+<div class="score">
+    评分结果为：<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+</div>
+
+</body>
+<script>
+    function cla(a){
+        return document.getElementsByClassName(a)
+    }
+    var i=5;
+    var btn=cla("btn")[0];
+    var timer=setInterval(function(){
+        i--;
+        if(i<=0){
+            btn.setAttribute("value","提交");
+            btn.removeAttribute("disabled");
+        }else{
+            clearInterval(timer);
+            btn.setAttribute("value","请仔细阅读协议("+i+")");
+        }
+    },1000);
+
+
+    var text1=cla("t1")[0];
+    var text2=cla("t2")[0];
+    var text3=cla("t3")[0];
+    var cli=cla("click")[0];
+    function add(a,b){
+        return a+b;
+    }
+
+
+    cli.onclick=function(){
+        var t1=Number(text1.value);
+        var t2=Number(text2.value);
+        text3.value=add(t1, t2);
+    };
+
+    var score=cla("score")[0];
+    var spans=score.children;
+    var fa=true;
+
+
+    for(var i=0;i<spans.length;i++){
+        spans[i].index=i;
+            spans[i].onmouseover=function(){
+                var index1=this.index;
+                for(var m=0;m<spans.length;m++){
+                    spans[m].innerHTML="☆"
+                }
+                for(var j=0;j<=index1;j++){
+                    spans[j].innerHTML="★";
+                }
+            };
+        spans[i].onclick=function(){
+            fa=false;
+            for(var m=0;m<spans.length;m++){
+                spans[m].innerHTML="☆"
+            }
+            index=this.index;
+            for(var j=0;j<=index;j++){
+                spans[j].innerHTML="★";
+            }
+        };
+        score.onmouseleave=function(){
+            for(var m=0;m<spans.length;m++){
+                spans[m].innerHTML="☆"
+            }
+            if(fa!=true){
+                for(var j=0;j<=index;j++){
+                    spans[j].innerHTML="★";
+                }
+            }
+        };
+    }
+
+/*编写一个方法 传递参数的时候求和 没参数的时候返回0*/
+    /*arguments 返回当前参数的一个集合*/
+    function add(){
+        var a=0;
+        if(arguments.length>0){
+            for(var i=0;i<arguments.length;i++){
+                a+=arguments[i];
+            }
+        }
+        return a;
+    }
+    /*es6*/
+    function add(...arr){
+        var a=0;
+        if(arr.length>0){
+            for(var i=0;i<arr.length;i++){
+                a+=arr[i];
+            }
+        }
+        return a;
+    }
+
+
+    /*获取双十一倒计时*/
+    var ti1=new Date();
+    var ti2=new Date("2017-11-11").getTime();/*距离1970年的毫秒数*/
+    var tt=(ti2-ti1)/1000;
+    console.log(ti1,ti2,tt);   /*Mon Nov 06 2017 10:08:31 GMT+0800 (中国标准时间) 1510358400000 424288.382*/
+    var day=parseInt(tt/3600/24);
+    var hour=parseInt(tt/3600%24);
+    var min=parseInt(tt/60%60);
+    var sec=parseInt(tt%60);
+
+
+
+    for(var i=0;i<5;i++){
+        setTimeout(function(){
+            console.log(i);
+        },i*1000)
+    }/*5*/
+    for(var i=0;i<5;i++){
+        setTimeout(function(i){
+            console.log(i);
+        }(i),i*1000)
+    }/*0 1 2 3 4*//*形成闭包*/
+
+
+//    截取字符串中的数字
+    var str="aaa56nn9ddd09";
+    var arr=[];
+    var arr1=[];
+    var str1="";
+    for(var i=0;i<str.length;i++){
+        if(str.charAt(i)>=0&&str.charAt(i)<=9){
+            str1+=str.charAt(i);/*字符串连接*/
+        }else{
+            if(str1){
+                arr.push(str1);
+                str1="";
+            }
+        }
+        if(i==str.length-1){
+            if(str1){
+                arr.push(str1);
+                str1="";
+            }
+        }
+    }
+    console.log(arr);
+
+
+    console.log(str.match(/\d+/g));
+</script>
+</html>

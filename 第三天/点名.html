@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        .box{
+            width: 1200px;
+            margin: auto;
+        }
+        ul li{
+            margin: 10px 20px;
+            float: left;
+            width: 50px;
+            height: 30px;
+            font:20px/30px "";
+            text-align: center;
+            padding: 10px;
+            background: #cccccc;
+        }
+        ul li.col{
+            background: pink;
+        }
+        .btn{
+            display: block;
+            padding: 10px;
+            text-align: center;
+            font: 30px/30px "";
+            margin: 100px auto;
+        }
+        .clear:after{
+            display: block;
+            content: "";
+            clear: both;
+        }
+        .p1{
+            margin: 100px auto;
+            text-align: center;
+            font: 60px/100px "";
+        }
+    </style>
+</head>
+<body>
+<input class="btn" type="button" value="点名"/>
+<div class="box">
+    <ul class="clear">
+        <li class="col">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+    </ul>
+</div>
+<p class="p1">恭喜第XXX位同学</p>
+</body>
+<script>
+    function cla(a){
+        return document.getElementsByClassName(a)
+    }
+    var btn=cla("btn")[0];
+    var box=cla("box")[0];
+    var ullis=box.children[0].children;
+    var p=cla("p1")[0];
+    var index=0;
+    var timer=null;
+    var i=0;
+    var fa=true;
+
+    btn.onclick=function(){
+        if(fa){
+            fa=false;
+            timer=setInterval(function(){
+                i++;
+                if(i>ullis.length-1){
+                    i=0;
+                }
+                for(var j=0;j<ullis.length;j++){
+                    ullis[j]. className="";
+                }
+                ullis[i].className="col";
+                p.innerHTML="恭喜第"+ullis[i].innerHTML+"位同学";
+            },10);
+        }else{
+            fa=true;
+            clearInterval(timer);
+        }
+    }
+
+
+</script>
+</html>

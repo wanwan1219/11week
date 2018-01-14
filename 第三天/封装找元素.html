@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box"></div>
+<div class="box">1</div>
+<div class="box">2</div>
+<div class="box">3</div>
+<div></div>
+</body>
+<script>
+    function $(a){
+        var m=a.substr(0,1);/*截取第1个开始长度为1*/
+        var n= a.substring(1);
+        if(m=="#"){
+            return document.getElementById(n);
+        }else if(m=="."){
+            if(document.getElementsByClassName){
+                return document.getElementsByClassName(n)
+            }else{
+                var tag=document.getElementsByTagName("*");
+                var Arr=[];
+                for(var i=0;i<tag.length;i++){
+                    if(tag[i].className==n){
+                        Arr.push(tag[i]);
+                    }
+                }
+                return Arr;
+            }
+        }else{
+            return document.getElementsByTagName(a);
+        }
+    }
+    console.log($("#box"));
+    console.log($(".box")[1]);
+    console.log($("div")[3]);
+</script>
+</html>

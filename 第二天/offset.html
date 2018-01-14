@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: red;
+            border: 1px solid #cccbba;
+        }
+    </style>
+</head>
+<body>
+<div class="box" style="margin-left: 20px;position: absolute">
+    <div class="box1" style="left: 30px"></div>
+</div>
+</body>
+<script>
+    function cla(a){
+        return document.getElementsByClassName(a);
+    }
+    var box=cla("box")[0];
+    var box1=cla("box1")[0];
+    console.log(box.offsetLeft);
+    console.log(box1.offsetLeft);
+</script>
+</html>
